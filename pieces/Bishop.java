@@ -9,4 +9,9 @@ public class Bishop extends Pieces{
     public boolean canMove() {
         return false;
     }
+
+    @Override
+    public String toString() {
+        return "B";
+    }
 }

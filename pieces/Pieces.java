@@ -17,5 +17,7 @@ public abstract class Pieces {
         return this.y;
     }
 
+    public abstract String toString();
+
     public abstract boolean canMove();
 }

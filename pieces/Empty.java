@@ -1,8 +1,10 @@
 package pieces;
-public class King extends Pieces{
-    public King(int x, int y) {
+
+public class Empty extends Pieces{
+    public Empty(int x, int y) {
         super(x, y);
     }
+
     @Override
     public boolean canMove() {
         // TODO Auto-generated method stub
@@ -11,6 +13,6 @@ public class King extends Pieces{
 
     @Override
     public String toString() {
-        return "K";
+        return "X";
     }
 }

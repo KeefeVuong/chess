@@ -11,4 +11,9 @@ public class Pawn extends Pieces {
         // TODO Auto-generated method stub
         return false;
     }
+
+    @Override
+    public String toString() {
+        return "P";
+    }
 }
