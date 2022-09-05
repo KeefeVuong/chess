@@ -6,7 +6,7 @@ public class Bishop extends Pieces{
     }
 
     @Override
-    public boolean canMove() {
+    public boolean canMove(Pieces[][] board, int finalX, int finalY) {
         return false;
     }
 

@@ -4,8 +4,7 @@ public class King extends Pieces{
         super(x, y);
     }
     @Override
-    public boolean canMove() {
-        // TODO Auto-generated method stub
+    public boolean canMove(Pieces[][] board, int finalX, int finalY) {
         return false;
     }
 

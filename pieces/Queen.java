@@ -5,8 +5,7 @@ public class Queen extends Pieces{
     }
 
     @Override
-    public boolean canMove() {
-        // TODO Auto-generated method stub
+    public boolean canMove(Pieces[][] board, int finalX, int finalY) {
         return false;
     }
 

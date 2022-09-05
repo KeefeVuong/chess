@@ -29,6 +29,15 @@ public class Game {
 
     }
 
+    public void move(int currX, int currY, int finalX, int finalY) {
+        Pieces piece = board[currY][currX];
+        if (piece.canMove(board, finalX, finalY)) {
+            piece.move(board, finalX, finalY);
+            board[finalY][finalX] = board[currY][currX];
+            board[currY][currX] = new Empty(currX, currY);
+        }
+    }
+
     public void placePiece(Pieces p) {
         board[p.getY()][p.getX()] = p;
     }
@@ -38,12 +47,12 @@ public class Game {
 
         for (int i =  0; i < 8; i++) {
             if (type.equals("white")) {
-                piecesList.add(new Pawn(i, position - 1));
-                placePiece(new Pawn(i, position - 1));
+                piecesList.add(new Pawn(i, position - 1, type));
+                placePiece(new Pawn(i, position - 1, type));
             }
             else {
-                piecesList.add(new Pawn(i, position + 1));
-                placePiece(new Pawn(i, position + 1));
+                piecesList.add(new Pawn(i, position + 1, type));
+                placePiece(new Pawn(i, position + 1, type));
             }
         }
 
@@ -86,6 +95,17 @@ public class Game {
     public static void main(String[] args) {
         Game newGame = new Game();
         newGame.newGame();
+        newGame.printPieces();
+        System.out.println();
+        newGame.move(4, 1, 4, 3);
+        newGame.printPieces();
+
+        System.out.println();
+        newGame.move(3, 6, 3, 4);
+        newGame.printPieces();
+
+        System.out.println();
+        newGame.move(3, 4, 4, 3);
         newGame.printPieces();
     }
 }

@@ -17,7 +17,12 @@ public abstract class Pieces {
         return this.y;
     }
 
+    public void move(Pieces[][] board, int finalX, int finalY) {
+        this.x = finalX;
+        this.y = finalY;
+    }
+
     public abstract String toString();
 
-    public abstract boolean canMove();
+    public abstract boolean canMove(Pieces[][] board, int finalX, int finalY);
 }
