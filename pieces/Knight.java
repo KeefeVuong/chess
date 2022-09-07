@@ -1,8 +1,8 @@
 package pieces;
 public class Knight extends Pieces{
     
-    public Knight(int x, int y) {
-        super(x, y);
+    public Knight(int x, int y, String type) {
+        super(x, y, type);
     }
 
     @Override

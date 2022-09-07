@@ -1,8 +1,8 @@
 package pieces;
 
 public class Empty extends Pieces{
-    public Empty(int x, int y) {
-        super(x, y);
+    public Empty(int x, int y, String type) {
+        super(x, y, type);
     }
 
     @Override

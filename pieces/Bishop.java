@@ -1,8 +1,8 @@
 package pieces;
 
 public class Bishop extends Pieces{
-    public Bishop(int x, int y) {
-        super(x, y);
+    public Bishop(int x, int y, String type) {
+        super(x, y, type);
     }
 
     @Override

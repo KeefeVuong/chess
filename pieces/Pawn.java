@@ -2,55 +2,48 @@ package pieces;
 
 public class Pawn extends Pieces {
 
-    private String type;
     private boolean status;
 
     public Pawn(int x, int y, String type) {
-        super(x, y);
-        this.type = type;
+        super(x, y, type);
         this.status = true;
     }
 
     @Override
-    public boolean canMove(Pieces[][] board, int finalX, int finalY) {
-        if (type.equals("white")) {
-            if (y - finalY == 2 && status) {
-                return true;
-            }
-            if (y - finalY != 1) {
-                return false;
-            }
-
-            if (x + 1 == finalX && y - 1 == finalY && !board[finalY][finalX].toString().equals("X")) {
-                return true;
-            }
-
-            if (x - 1 == finalX && y - 1 == finalY && !board[finalY][finalX].toString().equals("X")) {
-                return true;
-            }
+    public boolean canMove(Pieces[][] board, int dX, int dY) {
+        if (Math.abs(dX) == Math.abs(dY) && !board[y - dY][x - dX].toString().equals("X") && !board[y - dY][x - dX].getType().equals(this.type)) {
+            return true;
         }
-        else {
-            if (finalY - y == 2 && status) {
-                return true;
-            }
-            if (finalY - y != 1) {
-                return false;
-            }
+ 
+        dX = Math.abs(dX);
+        dY = Math.abs(dY);
 
-            if (x + 1 == finalX && y + 1 == finalY && !board[finalY][finalX].toString().equals("X")) {
-                return true;
-            }
+        return (dY == 2 && status) || (dY == 1 && board[y - dY][x - dX].toString().equals("X")) && (dX == 0);
+        
+        // if (type.equals("white")) {
+        //     if (x + 1 == dX && y - 1 == dY && !board[dY][dX].toString().equals("X")) {
+        //         return true;
+        //     }
 
-            if (x - 1 == finalX && y + 1 == finalY && !board[finalY][finalX].toString().equals("X")) {
-                return true;
-            }
-        }
+        //     if (x - 1 == dX && y - 1 == dY && !board[dY][dX].toString().equals("X")) {
+        //         return true;
+        //     }
+        // }
+        // else {
+        //     if (x + 1 == dX && y + 1 == dY && !board[dY][dX].toString().equals("X")) {
+        //         return true;
+        //     }
 
-        if (this.x != finalX) {
-            return false;
-        }
+        //     if (x - 1 == dX && y + 1 == dY && !board[dY][dX].toString().equals("X")) {
+        //         return true;
+        //     }
+        // }
 
-        return true;
+        // if (this.x != dX) {
+        //     return false;
+        // }
+
+        // return true;
     }
 
     @Override

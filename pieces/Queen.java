@@ -1,7 +1,7 @@
 package pieces;
 public class Queen extends Pieces{
-    public Queen(int x, int y) {
-        super(x, y);
+    public Queen(int x, int y, String type) {
+        super(x, y, type);
     }
 
     @Override

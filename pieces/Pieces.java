@@ -3,10 +3,16 @@ package pieces;
 public abstract class Pieces {
     protected int x;
     protected int y;
+    protected String type;
 
-    public Pieces(int x, int y) {
+    public Pieces(int x, int y, String type) {
         this.x = x;
         this.y = y;
+        this.type = type;
+    }
+
+    public String getType() {
+        return type;
     }
 
     public int getX() {
@@ -24,5 +30,5 @@ public abstract class Pieces {
 
     public abstract String toString();
 
-    public abstract boolean canMove(Pieces[][] board, int finalX, int finalY);
+    public abstract boolean canMove(Pieces[][] board, int dX, int dY);
 }

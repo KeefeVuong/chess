@@ -1,7 +1,7 @@
 package pieces;
 public class Rook extends Pieces{
-    public Rook(int x, int y) {
-        super(x, y);
+    public Rook(int x, int y, String type) {
+        super(x, y, type);
     }
 
     @Override
