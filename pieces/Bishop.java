@@ -12,6 +12,9 @@ public class Bishop extends Pieces{
 
     @Override
     public String toString() {
-        return "B";
+        if (this.type.equals("white")) {
+            return "♗";
+        }
+        return "♝";
     }
 }

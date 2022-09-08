@@ -1,7 +1,9 @@
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
+import java.util.Set;
 
 import pieces.Bishop;
 import pieces.Empty;
@@ -18,6 +20,7 @@ public class Game {
     private PlayerBlack playerBlack;
 
     private Pieces[][] board = new Pieces[8][8];
+    private Map<String, Integer> convertLetter = new HashMap<>();
 
     public void newGame() {
         for (int i = 0; i < 8; i++) {
@@ -25,8 +28,42 @@ public class Game {
                 board[i][j] = new Empty(i, j, "none");
             }
         }
+        convertLetter.put("a", 0);
+        convertLetter.put("b", 1);
+        convertLetter.put("c", 2);
+        convertLetter.put("d", 3);
+        convertLetter.put("e", 4);
+        convertLetter.put("f", 5);
+        convertLetter.put("g", 6);
+        convertLetter.put("h", 7);
         playerWhite = new PlayerWhite(generatePieces(7, "white"));
         playerBlack = new PlayerBlack(generatePieces(0, "black"));
+
+        Scanner scanner = new Scanner(System.in);
+        while (true) {
+            System.out.println("=======================");
+            printPieces();
+            System.out.println("=======================");
+            
+            System.out.print("Enter start position: ");
+            String pos1 = scanner.nextLine();
+            
+            if (pos1.equals("-")) {
+                break;
+            }
+            
+            System.out.print("Enter end position: ");
+            String pos2 = scanner.nextLine();
+            
+            int pos1X = convertLetter.get(pos1.substring(0, 1));
+            int pos1Y = 8 - Character.getNumericValue(pos1.charAt(1));
+            
+            int pos2X = convertLetter.get(pos2.substring(0, 1));
+            int pos2Y = 8 - Character.getNumericValue(pos2.charAt(1));
+
+            move(pos1X, pos1Y, pos2X, pos2Y);
+        }
+        scanner.close();
 
     }
 
@@ -87,33 +124,33 @@ public class Game {
     public void printPieces() {
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
+                if (j == 0) {
+                    System.out.print(8 - i + " ");
+                    System.out.print("| ");
+                }
                 System.out.print(board[i][j].toString() + " ");
             }
             System.out.println();
         }
-    }
 
+        System.out.print("  ");
+        for (int i = 0; i < 17; i++) {
+            System.out.print("-");
+        }
+        System.out.println();
+
+        System.out.print("    ");
+        Set<String> letters = convertLetter.keySet();
+        for (String letter : letters) {
+            System.out.print(letter + " ");
+        }
+        System.out.println();
+    
+    }
+    
     public static void main(String[] args) {
         Game newGame = new Game();
         newGame.newGame();
-
-        Scanner scanner = new Scanner(System.in);
-        while (true) {
-            newGame.printPieces();
-
-            System.out.print("Enter start position: ");
-            String pos1 = scanner.nextLine();
-            
-            if (pos1.equals("-")) {
-                break;
-            }
-            
-            System.out.print("Enter end position: ");
-            String pos2 = scanner.nextLine();
-
-            newGame.move(Character.getNumericValue(pos1.charAt(0)), Character.getNumericValue(pos1.charAt(1)), Character.getNumericValue(pos2.charAt(0)), Character.getNumericValue(pos2.charAt(1)));
-        }
-        scanner.close();
         
         // newGame.printPieces();
         // System.out.println();

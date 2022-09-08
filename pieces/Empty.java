@@ -12,6 +12,6 @@ public class Empty extends Pieces{
 
     @Override
     public String toString() {
-        return "X";
+        return "✕";
     }
 }

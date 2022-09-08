@@ -18,6 +18,9 @@ public class King extends Pieces{
 
     @Override
     public String toString() {
-        return "K";
+        if (this.type.equals("white")) {
+            return "♔";
+        }
+        return "♚";
     }
 }

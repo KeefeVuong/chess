@@ -11,6 +11,9 @@ public class Queen extends Pieces{
 
     @Override
     public String toString() {
-        return "Q";
+        if (this.type.equals("white")) {
+            return "♕";
+        }
+        return "♛";
     }
 }

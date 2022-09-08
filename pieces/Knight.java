@@ -12,6 +12,9 @@ public class Knight extends Pieces{
 
     @Override
     public String toString() {
-        return "H";
+        if (this.type.equals("white")) {
+            return "♘";
+        }
+        return "♞";
     }
 }
